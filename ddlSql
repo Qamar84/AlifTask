@@ -1,0 +1,26 @@
+CREATE DATABASE "MeetingRoom"
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Russian_Russia.1251'
+    LC_CTYPE = 'Russian_Russia.1251'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+CREATE SCHEMA IF NOT EXISTS "MeetingRoom"
+    AUTHORIZATION postgres;
+
+CREATE TABLE IF NOT EXISTS "MeetingRoom"."RoomReservation"
+(
+    "ID" smallint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 32767 CACHE 1 ),
+    "Name" character(20) COLLATE pg_catalog."default" NOT NULL,
+    "Stime" timestamp without time zone,
+    "Etime" timestamp without time zone,
+    "BusyBy" character(50) COLLATE pg_catalog."default",
+    CONSTRAINT "RoomReservation_pkey" PRIMARY KEY ("ID")
+)
+INSERT INTO "MeetingRoom"."RoomReservation"("Name") VALUES('Meeting Room1');
+INSERT INTO "MeetingRoom"."RoomReservation"("Name") VALUES('Meeting Room2');
+INSERT INTO "MeetingRoom"."RoomReservation"("Name") VALUES('Meeting Room3');
+INSERT INTO "MeetingRoom"."RoomReservation"("Name") VALUES('Meeting Room4');
+INSERT INTO "MeetingRoom"."RoomReservation"("Name") VALUES('Meeting Room5');
